@@ -3,6 +3,25 @@
 (function () {
   'use strict';
 
+  // ===== LENIS SMOOTH SCROLLING =====
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
   // ===== PRELOADER =====
   window.addEventListener('load', () => {
     setTimeout(() => {
@@ -151,12 +170,15 @@
     // Ease in-out
     const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
+    // Responsive horizontal translation
+    const txMultiplier = window.innerWidth < 768 ? 0 : (window.innerWidth < 1024 ? 0.5 : 1);
+
     return {
       rx: lerp(kf1.rx, kf2.rx, eased),
       ry: lerp(kf1.ry, kf2.ry, eased),
       rz: lerp(kf1.rz, kf2.rz, eased),
       s: lerp(kf1.s, kf2.s, eased),
-      tx: lerp(kf1.tx, kf2.tx, eased),
+      tx: lerp(kf1.tx, kf2.tx, eased) * txMultiplier,
       ty: lerp(kf1.ty, kf2.ty, eased),
       glow: lerp(kf1.glow, kf2.glow, eased),
       glyphOn: t > 0.5 ? kf2.glyphOn : kf1.glyphOn
@@ -283,9 +305,9 @@
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
+      const target = link.getAttribute('href');
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        lenis.scrollTo(target, { offset: -50 });
       }
     });
   });
