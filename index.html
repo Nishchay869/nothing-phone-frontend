@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nothing Phone (2) — Pure Instinct</title>
+    <meta name="description" content="Experience the Nothing Phone (2) with immersive 3D scroll animations. Iconic Glyph Interface, stunning display, and powerful performance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <div class="loader-text">
+                <span class="loader-nothing"><img src="nothing-logo.svg" alt="Nothing" width="140" height="20"></span>
+                <span class="loader-sub">Loading Experience</span>
+                <div class="loader-progress">
+                    <div class="loader-bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="cursor"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" id="nav-logo">
+                <img src="nothing-logo.svg" alt="Nothing" class="nav-logo-img" width="100" height="14">
+            </a>
+            <div class="nav-links">
+                <a href="#glyph" class="nav-link" id="nav-glyph">Glyph</a>
+                <a href="#display" class="nav-link" id="nav-display">Display</a>
+                <a href="#camera" class="nav-link" id="nav-camera">Camera</a>
+                <a href="#performance" class="nav-link" id="nav-performance">Performance</a>
+            </div>
+            <a href="#cta" class="nav-cta" id="nav-cta-btn">Pre-order</a>
+        </div>
+    </nav>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- 3D Phone Container (Fixed) -->
+    <div class="phone-stage" id="phone-stage">
+        <div class="phone-glow" id="phone-glow"></div>
+        <div class="phone-shadow" id="phone-shadow"></div>
+        <div class="phone-wrapper" id="phone-wrapper">
+            <div class="phone-body" id="phone-body">
+                <!-- Front Face -->
+                <div class="phone-front" id="phone-front">
+                    <div class="phone-bezel">
+                        <div class="phone-notch">
+                            <div class="notch-camera"></div>
+                        </div>
+                        <div class="phone-screen" id="phone-screen">
+                            <div class="screen-wallpaper">
+                                <img src="phone_wallpaper.png" alt="Wallpaper" class="wallpaper-img">
+                            </div>
+                            <div class="screen-overlay">
+                                <div class="screen-time">16:14</div>
+                                <div class="screen-date">Thursday, April 24</div>
+                                <div class="screen-widgets">
+                                    <div class="widget widget-weather">
+                                        <span class="widget-icon">☀️</span>
+                                        <span class="widget-temp">28°</span>
+                                    </div>
+                                    <div class="widget widget-battery">
+                                        <div class="battery-icon">
+                                            <div class="battery-fill"></div>
+                                        </div>
+                                        <span>87%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="screen-bottom-bar"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Back Face -->
+                <div class="phone-back" id="phone-back">
+                    <div class="back-panel">
+                        <!-- Glyph Interface LEDs -->
+                        <div class="glyph-container" id="glyph-container">
+                            <!-- Camera Ring -->
+                            <div class="glyph-element glyph-camera-ring" id="glyph-camera-ring">
+                                <div class="camera-lens camera-lens-1"></div>
+                                <div class="camera-lens camera-lens-2"></div>
+                                <div class="camera-flash"></div>
+                            </div>
+                            <!-- Top Strip -->
+                            <div class="glyph-element glyph-strip-top" id="glyph-strip-top"></div>
+                            <!-- Center Arc -->
+                            <div class="glyph-element glyph-arc" id="glyph-arc"></div>
+                            <!-- Exclamation Mark -->
+                            <div class="glyph-element glyph-exclamation" id="glyph-exclamation">
+                                <div class="excl-dot"></div>
+                                <div class="excl-line"></div>
+                            </div>
+                            <!-- Bottom Strip -->
+                            <div class="glyph-element glyph-strip-bottom" id="glyph-strip-bottom"></div>
+                            <!-- USB Strip -->
+                            <div class="glyph-element glyph-usb" id="glyph-usb"></div>
+                        </div>
+                        <!-- Recycled Aluminum texture -->
+                        <div class="back-texture"></div>
+                        <div class="back-logo"><img src="nothing-logo.svg" alt="Nothing" width="80" height="11" style="opacity:0.15"></div>
+                    </div>
+                </div>
+                <!-- Phone Edges -->
+                <div class="phone-edge phone-edge-left"></div>
+                <div class="phone-edge phone-edge-right"></div>
+                <div class="phone-edge phone-edge-top"></div>
+                <div class="phone-edge phone-edge-bottom"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Content -->
+    <main class="scroll-content" id="scroll-content">
+
+        <!-- Section 1: Hero -->
+        <section class="section section-hero" id="hero">
+            <div class="section-inner">
+                <div class="hero-content">
+                    <div class="hero-eyebrow" id="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        New
+                    </div>
+                    <h1 class="hero-title" id="hero-title">
+                        <span class="title-line title-line-1">Phone</span>
+                        <span class="title-line title-line-2">(2)</span>
+                    </h1>
+                    <p class="hero-subtitle" id="hero-subtitle">Pure Instinct</p>
+                    <p class="hero-desc" id="hero-desc">The most refined Nothing experience yet. Designed to be felt, not just seen.</p>
+                    <div class="hero-scroll-hint" id="scroll-hint">
+                        <span>Scroll to explore</span>
+                        <div class="scroll-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 5v14M5 12l7 7 7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Design -->
+        <section class="section section-design" id="design">
+            <div class="section-inner">
+                <div class="content-block content-left">
+                    <span class="section-label" id="design-label">Design</span>
+                    <h2 class="section-title" id="design-title">Transparent<br>by Design</h2>
+                    <p class="section-desc" id="design-desc">Nothing Phone (2) strips away the unnecessary to reveal what matters. Every curve, every edge, every detail is intentional. Crafted from 100% recycled aluminum with a transparent back panel that lets you see the technology inside.</p>
+                    <div class="spec-chips">
+                        <div class="spec-chip" id="chip-aluminum">
+                            <span class="chip-value">100%</span>
+                            <span class="chip-label">Recycled Aluminum</span>
+                        </div>
+                        <div class="spec-chip" id="chip-gorilla">
+                            <span class="chip-value">Gorilla Glass</span>
+                            <span class="chip-label">Victus™</span>
+                        </div>
+                        <div class="spec-chip" id="chip-weight">
+                            <span class="chip-value">201g</span>
+                            <span class="chip-label">Perfectly balanced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Glyph Interface -->
+        <section class="section section-glyph" id="glyph">
+            <div class="section-inner">
+                <div class="content-block content-right">
+                    <span class="section-label" id="glyph-label">Glyph Interface</span>
+                    <h2 class="section-title" id="glyph-title">Light Up<br>Your World</h2>
+                    <p class="section-desc" id="glyph-desc">The iconic Glyph Interface returns, now with 33 individual light zones. Assign unique patterns to contacts, use it as a fill light for photos, or track your timer — all without touching your screen.</p>
+                    <div class="glyph-features">
+                        <div class="glyph-feature" id="feat-zones">
+                            <div class="feature-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 2v20M2 12h20"/>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <strong>33 Light Zones</strong>
+                                <span>Infinitely customizable patterns</span>
+                            </div>
+                        </div>
+                        <div class="glyph-feature" id="feat-timer">
+                            <div class="feature-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Glyph Timer</strong>
+                                <span>Visual progress at a glance</span>
+                            </div>
+                        </div>
+                        <div class="glyph-feature" id="feat-essential">
+                            <div class="feature-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18M9 3v18"/>
+                                </svg>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Essential Notifications</strong>
+                                <span>Important alerts, gently delivered</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Display -->
+        <section class="section section-display" id="display">
+            <div class="section-inner">
+                <div class="content-block content-left">
+                    <span class="section-label" id="display-label">Display</span>
+                    <h2 class="section-title" id="display-title">Brilliant.<br>Vivid. Smooth.</h2>
+                    <p class="section-desc" id="display-desc">A 6.7" LTPO AMOLED display that adapts from 1-120Hz for buttery smoothness. With 1600 nits peak brightness, every pixel comes alive even under direct sunlight.</p>
+                    <div class="display-specs">
+                        <div class="display-spec" id="spec-size">
+                            <div class="spec-number">
+                                <span class="counter" data-target="6.7">0</span>"
+                            </div>
+                            <div class="spec-label">LTPO AMOLED</div>
+                        </div>
+                        <div class="display-spec" id="spec-hz">
+                            <div class="spec-number">
+                                <span class="counter" data-target="120">0</span>Hz
+                            </div>
+                            <div class="spec-label">Adaptive Refresh</div>
+                        </div>
+                        <div class="display-spec" id="spec-nits">
+                            <div class="spec-number">
+                                <span class="counter" data-target="1600">0</span>
+                            </div>
+                            <div class="spec-label">Peak Nits</div>
+                        </div>
+                        <div class="display-spec" id="spec-hdr">
+                            <div class="spec-number">HDR10+</div>
+                            <div class="spec-label">Dolby Vision</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Camera -->
+        <section class="section section-camera" id="camera">
+            <div class="section-inner">
+                <div class="content-block content-right">
+                    <span class="section-label" id="camera-label">Camera</span>
+                    <h2 class="section-title" id="camera-title">Capture<br>Everything</h2>
+                    <p class="section-desc" id="camera-desc">Dual 50MP cameras with Sony IMX890 sensor, OIS, and advanced computational photography. Capture pro-quality photos in any condition.</p>
+                    <div class="camera-samples">
+                        <div class="camera-sample" id="sample-landscape">
+                            <img src="camera_sample.png" alt="Landscape shot" loading="lazy">
+                            <div class="sample-label">50MP Ultra-clear</div>
+                        </div>
+                        <div class="camera-sample" id="sample-portrait">
+                            <img src="portrait_sample.png" alt="Portrait shot" loading="lazy">
+                            <div class="sample-label">Portrait Mode</div>
+                        </div>
+                    </div>
+                    <div class="camera-specs-row">
+                        <div class="cam-spec" id="cam-mp">
+                            <span class="cam-value">50MP</span>
+                            <span class="cam-label">Main Sensor</span>
+                        </div>
+                        <div class="cam-spec" id="cam-ois">
+                            <span class="cam-value">OIS</span>
+                            <span class="cam-label">Stabilization</span>
+                        </div>
+                        <div class="cam-spec" id="cam-4k">
+                            <span class="cam-value">4K</span>
+                            <span class="cam-label">Video @ 60fps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Performance -->
+        <section class="section section-performance" id="performance">
+            <div class="section-inner">
+                <div class="content-block content-center">
+                    <span class="section-label" id="perf-label">Performance</span>
+                    <h2 class="section-title" id="perf-title">Raw Power.<br>All Day.</h2>
+                    <p class="section-desc" id="perf-desc">Snapdragon® 8+ Gen 1 delivers flagship performance with efficiency. Paired with up to 12GB RAM and a 4700mAh battery — it keeps going when you need it most.</p>
+                    <div class="perf-grid">
+                        <div class="perf-card" id="perf-chip">
+                            <div class="perf-card-inner">
+                                <div class="perf-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                        <rect x="4" y="4" width="16" height="16" rx="2"/>
+                                        <rect x="8" y="8" width="8" height="8" rx="1"/>
+                                        <line x1="1" y1="8" x2="4" y2="8"/>
+                                        <line x1="1" y1="12" x2="4" y2="12"/>
+                                        <line x1="1" y1="16" x2="4" y2="16"/>
+                                        <line x1="20" y1="8" x2="23" y2="8"/>
+                                        <line x1="20" y1="12" x2="23" y2="12"/>
+                                        <line x1="20" y1="16" x2="23" y2="16"/>
+                                        <line x1="8" y1="1" x2="8" y2="4"/>
+                                        <line x1="12" y1="1" x2="12" y2="4"/>
+                                        <line x1="16" y1="1" x2="16" y2="4"/>
+                                        <line x1="8" y1="20" x2="8" y2="23"/>
+                                        <line x1="12" y1="20" x2="12" y2="23"/>
+                                        <line x1="16" y1="20" x2="16" y2="23"/>
+                                    </svg>
+                                </div>
+                                <h3>Snapdragon® 8+ Gen 1</h3>
+                                <p>Flagship mobile platform</p>
+                            </div>
+                        </div>
+                        <div class="perf-card" id="perf-ram">
+                            <div class="perf-card-inner">
+                                <div class="perf-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                        <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                        <line x1="6" y1="10" x2="6" y2="14"/>
+                                        <line x1="10" y1="10" x2="10" y2="14"/>
+                                        <line x1="14" y1="10" x2="14" y2="14"/>
+                                        <line x1="18" y1="10" x2="18" y2="14"/>
+                                    </svg>
+                                </div>
+                                <h3>12GB RAM</h3>
+                                <p>LPDDR5 Memory</p>
+                            </div>
+                        </div>
+                        <div class="perf-card" id="perf-battery">
+                            <div class="perf-card-inner">
+                                <div class="perf-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                        <rect x="6" y="2" width="12" height="20" rx="2"/>
+                                        <line x1="10" y1="0" x2="10" y2="2"/>
+                                        <line x1="14" y1="0" x2="14" y2="2"/>
+                                        <polyline points="10 14 12 10 14 14"/>
+                                    </svg>
+                                </div>
+                                <h3>4700 mAh</h3>
+                                <p>All-day battery</p>
+                            </div>
+                        </div>
+                        <div class="perf-card" id="perf-charge">
+                            <div class="perf-card-inner">
+                                <div class="perf-icon">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                                    </svg>
+                                </div>
+                                <h3>45W Fast Charge</h3>
+                                <p>0-50% in 20 minutes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: CTA -->
+        <section class="section section-cta" id="cta">
+            <div class="section-inner">
+                <div class="cta-content">
+                    <h2 class="cta-title" id="cta-title">Ready to<br>feel Nothing?</h2>
+                    <p class="cta-price" id="cta-price">Starting at <strong>$599</strong></p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary" id="btn-preorder">
+                            <span>Pre-order Now</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="btn btn-secondary" id="btn-learn">Learn More</a>
+                    </div>
+                    <div class="cta-colors">
+                        <span class="color-label">Available in</span>
+                        <div class="color-options">
+                            <button class="color-opt active" id="color-dark" style="--c: #1a1a1a" aria-label="Dark Grey"></button>
+                            <button class="color-opt" id="color-white" style="--c: #f5f5f5" aria-label="White"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" id="footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="nothing-logo.svg" alt="Nothing" width="140" height="20">
+                    <p>The best technology is beautiful, yet unseen.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Products</h4>
+                        <a href="#">Phone (2)</a>
+                        <a href="#">Phone (1)</a>
+                        <a href="#">Ear (2)</a>
+                        <a href="#">Ear (stick)</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Community</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Support</h4>
+                        <a href="#">Contact</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Warranty</a>
+                        <a href="#">Returns</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <span>© 2024 Nothing Technology. All rights reserved.</span>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Twitter" id="social-twitter">𝕏</a>
+                        <a href="#" aria-label="Instagram" id="social-instagram">IG</a>
+                        <a href="#" aria-label="YouTube" id="social-youtube">YT</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

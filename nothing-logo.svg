@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 34" fill="white">
+<!-- N -->
+<circle cx="3" cy="3" r="2.5"/><circle cx="31" cy="3" r="2.5"/>
+<circle cx="3" cy="10" r="2.5"/><circle cx="10" cy="10" r="2.5"/><circle cx="31" cy="10" r="2.5"/>
+<circle cx="3" cy="17" r="2.5"/><circle cx="17" cy="17" r="2.5"/><circle cx="31" cy="17" r="2.5"/>
+<circle cx="3" cy="24" r="2.5"/><circle cx="24" cy="24" r="2.5"/><circle cx="31" cy="24" r="2.5"/>
+<circle cx="3" cy="31" r="2.5"/><circle cx="31" cy="31" r="2.5"/>
+<!-- O -->
+<circle cx="50" cy="3" r="2.5"/><circle cx="57" cy="3" r="2.5"/><circle cx="64" cy="3" r="2.5"/>
+<circle cx="43" cy="10" r="2.5"/><circle cx="71" cy="10" r="2.5"/>
+<circle cx="43" cy="17" r="2.5"/><circle cx="71" cy="17" r="2.5"/>
+<circle cx="43" cy="24" r="2.5"/><circle cx="71" cy="24" r="2.5"/>
+<circle cx="50" cy="31" r="2.5"/><circle cx="57" cy="31" r="2.5"/><circle cx="64" cy="31" r="2.5"/>
+<!-- T -->
+<circle cx="83" cy="3" r="2.5"/><circle cx="90" cy="3" r="2.5"/><circle cx="97" cy="3" r="2.5"/><circle cx="104" cy="3" r="2.5"/><circle cx="111" cy="3" r="2.5"/>
+<circle cx="97" cy="10" r="2.5"/>
+<circle cx="97" cy="17" r="2.5"/>
+<circle cx="97" cy="24" r="2.5"/>
+<circle cx="97" cy="31" r="2.5"/>
+<!-- H -->
+<circle cx="123" cy="3" r="2.5"/><circle cx="151" cy="3" r="2.5"/>
+<circle cx="123" cy="10" r="2.5"/><circle cx="151" cy="10" r="2.5"/>
+<circle cx="123" cy="17" r="2.5"/><circle cx="130" cy="17" r="2.5"/><circle cx="137" cy="17" r="2.5"/><circle cx="144" cy="17" r="2.5"/><circle cx="151" cy="17" r="2.5"/>
+<circle cx="123" cy="24" r="2.5"/><circle cx="151" cy="24" r="2.5"/>
+<circle cx="123" cy="31" r="2.5"/><circle cx="151" cy="31" r="2.5"/>
+<!-- I -->
+<circle cx="163" cy="3" r="2.5"/><circle cx="170" cy="3" r="2.5"/><circle cx="177" cy="3" r="2.5"/>
+<circle cx="170" cy="10" r="2.5"/>
+<circle cx="170" cy="17" r="2.5"/>
+<circle cx="170" cy="24" r="2.5"/>
+<circle cx="163" cy="31" r="2.5"/><circle cx="170" cy="31" r="2.5"/><circle cx="177" cy="31" r="2.5"/>
+<!-- N -->
+<circle cx="189" cy="3" r="2.5"/><circle cx="217" cy="3" r="2.5"/>
+<circle cx="189" cy="10" r="2.5"/><circle cx="196" cy="10" r="2.5"/><circle cx="217" cy="10" r="2.5"/>
+<circle cx="189" cy="17" r="2.5"/><circle cx="203" cy="17" r="2.5"/><circle cx="217" cy="17" r="2.5"/>
+<circle cx="189" cy="24" r="2.5"/><circle cx="210" cy="24" r="2.5"/><circle cx="217" cy="24" r="2.5"/>
+<circle cx="189" cy="31" r="2.5"/><circle cx="217" cy="31" r="2.5"/>
+<!-- G -->
+<circle cx="236" cy="3" r="2.5"/><circle cx="243" cy="3" r="2.5"/><circle cx="250" cy="3" r="2.5"/>
+<circle cx="229" cy="10" r="2.5"/>
+<circle cx="229" cy="17" r="2.5"/><circle cx="243" cy="17" r="2.5"/><circle cx="250" cy="17" r="2.5"/><circle cx="257" cy="17" r="2.5"/>
+<circle cx="229" cy="24" r="2.5"/><circle cx="257" cy="24" r="2.5"/>
+<circle cx="236" cy="31" r="2.5"/><circle cx="243" cy="31" r="2.5"/><circle cx="250" cy="31" r="2.5"/>
+</svg>
